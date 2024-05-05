@@ -1,3 +1,5 @@
+import random
+
 from pantalla import *
 from claseCuadro import *
 from config import *
@@ -10,6 +12,11 @@ def main():
         else:
             pantalla_propiedades()
 
+            #Creando y Desordenando matriz de números
+            matriz_inicial = ["1" , "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9"]
+            random.shuffle(matriz_inicial)
+
+            #Creando "cuadrícula" principal del juego
             for i in range(grid_size):
                 for j in range(grid_size):
                     x_inicial = 100
@@ -17,19 +24,15 @@ def main():
                     x_inicial *= i + 1
                     y_inicial *= j + 1
 
-                    texto = j
-
                     if i == grid_size-1 and j == grid_size-1:
-                        cuadro = Cuadro(negro , x_inicial , y_inicial , cuadro_alto , cuadro_ancho , texto)
+                        cuadro = Cuadro(negro , x_inicial , y_inicial , cuadro_alto , cuadro_ancho)
                         cuadro.dibujar()
                     else:
-                        cuadro = Cuadro(blanco , x_inicial , y_inicial , cuadro_alto , cuadro_ancho , texto)
+                        cuadro = Cuadro(blanco , x_inicial , y_inicial , cuadro_alto , cuadro_ancho)
                         cuadro.dibujar()
-                        cuadro.renderizar_texto()
 
             pygame.display.flip()
 
-# Uf la extraño pero es raro XD
 
 if __name__ == "__main__":
     main()
