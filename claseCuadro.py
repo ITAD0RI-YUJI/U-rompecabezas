@@ -16,5 +16,5 @@ class Cuadro():
 
 
     def dibujar(self):
-        pygame.draw.rect(screen, self.color , (self.x , self.y , self.ancho, self.alto) , border_radius = 6)
+        pygame.draw.rect(screen, self.color , (self.x , self.y , self.ancho, self.alto))
         # pygame.draw.rect(SCREEN, self.color, (self.x, self.y, self.ancho, self.alto)) -> EL orden, es que se me olvida XD
