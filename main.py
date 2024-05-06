@@ -12,11 +12,6 @@ def main():
         else:
             pantalla_propiedades()
 
-            #Creando y Desordenando matriz de números
-            matriz_inicial = ["1" , "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9"]
-            random.shuffle(matriz_inicial)
-
-            #Creando "cuadrícula" principal del juego
             for i in range(grid_size):
                 for j in range(grid_size):
                     x_inicial = 110
@@ -25,11 +20,12 @@ def main():
                     y_inicial *= j + 1
 
                     if i == grid_size-1 and j == grid_size-1:
-                        cuadro = Cuadro(negro , x_inicial , y_inicial , cuadro_alto , cuadro_ancho)
-                        cuadro.dibujar()
+                        cuadro_negro = Cuadro_negro(negro , x_inicial , y_inicial , cuadro_alto , cuadro_ancho)
+                        cuadro_negro.dibujar()
                     else:
-                        cuadro = Cuadro(blanco , x_inicial , y_inicial , cuadro_alto , cuadro_ancho)
-                        cuadro.dibujar()
+                        cuadro_blanco = Cuadro_blanco(blanco , x_inicial , y_inicial , cuadro_alto , cuadro_ancho , fuente , grid_size)
+                        cuadro_blanco.dibujar()
+                        cuadro_blanco.texto()
 
             pygame.display.flip()
 
