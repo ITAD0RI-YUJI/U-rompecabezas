@@ -19,8 +19,8 @@ def main():
             #Creando "cuadrícula" principal del juego
             for i in range(grid_size):
                 for j in range(grid_size):
-                    x_inicial = 100
-                    y_inicial = 100
+                    x_inicial = 110
+                    y_inicial = 110
                     x_inicial *= i + 1
                     y_inicial *= j + 1
 
