@@ -31,26 +31,24 @@ class Cuadro_negro(Cuadro_base):
         pygame.draw.rect(screen, self.color , (self.x , self.y , self.ancho, self.alto))
         # pygame.draw.rect(SCREEN, self.color, (self.x, self.y, self.ancho, self.alto)) -> EL orden, es que se me olvida XD
 
+    def mover(self):
+        pass
+
 
 class Cuadro_blanco(Cuadro_base):
-    def __init__(self , color , x_inicial , y_inicial , cuadro_alto , cuadro_ancho , fuente , grid_size):
+    def __init__(self , color , x_inicial , y_inicial , cuadro_alto , cuadro_ancho , numero , pantalla):
         super().__init__(color , x_inicial , y_inicial , cuadro_alto , cuadro_ancho)
 
-        self.matriz_inicial = [["1" , "2" , "3"], ["4" , "5" , "6"], ["7" , "8"]]
-        self.fuente = fuente
-        self.grid_size = grid_size #Tamaño del juego
+        self.numero = numero
+        self.pantalla = pantalla
+        self.x_inicial = x_inicial
+        self.y_inicial = y_inicial
 
     def dibujar(self):
-        pygame.draw.rect(screen, self.color , (self.x , self.y , self.ancho, self.alto))
+        pygame.draw.rect(self.pantalla, self.color, (self.x_inicial * self.ancho, self.y_inicial * self.alto, self.ancho, self.alto))
 
     def texto(self):
-        random.shuffle(self.matriz_inicial) #Desordenando matriz original
-
-        #Recorriendo matriz 
-        for i in range(self.grid_size-1):
-            for j in range(self.grid_size-1):
-                self.texto = self.matriz_inicial[i][j]
-                finalText = self.fuente.render(self.texto, True, (150, 100, 20))
-
-        #Dibujando texto dentro del cuadro
-        screen.blit(finalText , (self.x , self.y))
+        font = pygame.font.SysFont(None, 40)
+        texto = font.render(str(self.numero), True, (0,0,0))
+        texto_rect = texto.get_rect(center=(self.x_inicial * self.ancho + self.ancho // 2, self.y_inicial * self.alto + self.alto // 2))
+        self.pantalla.blit(texto, texto_rect)
