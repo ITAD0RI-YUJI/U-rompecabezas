@@ -5,6 +5,9 @@ from claseCuadro import *
 from config import *
 
 def main():
+    numeros = list(range(1, (grid_size * grid_size)))
+    random.shuffle(numeros)
+    
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -13,8 +16,6 @@ def main():
             pantalla_propiedades()
 
             #Creando lista números
-            numeros = list(range(1, (grid_size * grid_size)))
-            random.shuffle(numeros)
 
             cuadros_blancos = []
             cuadros_negros = []
