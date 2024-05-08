@@ -12,21 +12,36 @@ def main():
         else:
             pantalla_propiedades()
 
+            #Creando lista números
+            numeros = list(range(1, (grid_size * grid_size)))
+            random.shuffle(numeros)
+
+            cuadros_blancos = []
+            cuadros_negros = []
+            indice_numero = 0
+
             for i in range(grid_size):
                 for j in range(grid_size):
-                    x_inicial = 110
-                    y_inicial = 110
-                    x_inicial *= i + 1
-                    y_inicial *= j + 1
+                  
+                    numero = numeros[indice_numero - 1]
 
                     if i == grid_size-1 and j == grid_size-1:
-                        cuadro_negro = Cuadro_negro(negro , x_inicial , y_inicial , cuadro_alto , cuadro_ancho)
-                        cuadro_negro.dibujar()
+                        cuadro_blanco = Cuadro_blanco(negro , i , j , cuadro_alto , cuadro_ancho , numero , screen)
+                        cuadros_negros.append(cuadro_blanco)
+                        indice_numero += 1                       
                     else:
-                        cuadro_blanco = Cuadro_blanco(blanco , x_inicial , y_inicial , cuadro_alto , cuadro_ancho , fuente , grid_size)
-                        cuadro_blanco.dibujar()
-                        cuadro_blanco.texto()
+                        cuadro_blanco = Cuadro_blanco(blanco , i , j , cuadro_alto , cuadro_ancho , numero , screen)
+                        cuadros_blancos.append(cuadro_blanco)
+                        indice_numero += 1
 
+
+            for cuadro in cuadros_blancos:
+                cuadro.dibujar()
+                cuadro.texto()
+            
+            for cuadro in cuadros_negros:
+                cuadro.dibujar()
+            
             pygame.display.flip()
 
 
