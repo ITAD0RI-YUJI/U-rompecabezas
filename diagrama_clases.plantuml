@@ -1,0 +1,30 @@
+@startuml clases
+
+abstract class Cuadro_base {
+    - color: Color
+    - rect: Rect
+    - x: int
+    - y: int
+    - alto: int
+    - ancho: int
+    {abstract} + dibujar(): void
+}
+
+class Cuadro_negro {
+    + dibujar(): void
+    + mover(): void
+}
+
+class Cuadro_blanco {
+    - numero: int
+    - pantalla: pygame.Surface
+    - x_inicial: int
+    - y_inicial: int
+    + dibujar(): void
+    + texto(): void
+}
+
+Cuadro_base <|-- Cuadro_negro
+Cuadro_base <|-- Cuadro_blanco
+
+@enduml
